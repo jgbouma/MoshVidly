@@ -35,19 +35,21 @@ namespace MoshVidly.Controllers
         }
 
         // movies
-        public ActionResult Index(int? pageIndex, string sortBy)
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
+            //var movie = new Movie() { Name = "Paw Patrol" };
+            var movies = new List<Movie>
             {
-                pageIndex = 1;
-            }
+                new Movie { Name = "Paw Patrol"},
+                new Movie { Name = "Buurman & Buurman - Winterpret"}
+            };
 
-            if (String.IsNullOrWhiteSpace(sortBy))
+            var viewModel = new IndexMovieViewModel
             {
-                sortBy = "Name";
-            }
+                Movies = movies
+            };
 
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+            return View(viewModel);
         }
 
         [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12)}")]
