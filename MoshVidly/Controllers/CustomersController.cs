@@ -1,4 +1,5 @@
 ﻿using MoshVidly.Models;
+using MoshVidly.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,19 @@ namespace MoshVidly.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers/RandomCustomer
-        public ActionResult RandomCustomer()
+        // GET: Customers
+        public ActionResult Index()
         {
-            var customer = new Customer() { Name = "Rider" };
-            
-            return View(customer);
+            var customers = new List<Customer> {
+                new Customer { Name = "John Smith"},
+                new Customer { Name = "Mary Williams"}
+            };
+
+            var viewModel = new IndexCustomerViewModel {
+                Customers = customers
+            };
+
+            return View(viewModel);
         }
     }
 }

@@ -37,7 +37,6 @@ namespace MoshVidly.Controllers
         // movies
         public ActionResult Index()
         {
-            //var movie = new Movie() { Name = "Paw Patrol" };
             var movies = new List<Movie>
             {
                 new Movie { Name = "Paw Patrol"},
